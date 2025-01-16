@@ -135,10 +135,10 @@ class RLHFFlow(PRM):
         self, **model_kwargs
     ) -> tuple[PreTrainedModel, PreTrainedTokenizer]:
         tokenizer = AutoTokenizer.from_pretrained(
-            "RLHFlow/Llama3.1-8B-PRM-Deepseek-Data"
+            "August4293/Llama3.1-8B-PRM-Deepseek-Data-4bit"
         )
         model = AutoModelForCausalLM.from_pretrained(
-            "RLHFlow/Llama3.1-8B-PRM-Deepseek-Data",
+            "August4293/Llama3.1-8B-PRM-Deepseek-Data-4bit",
             device_map="auto",
             torch_dtype=torch.bfloat16,
             **model_kwargs,
@@ -275,7 +275,7 @@ def load_prm(config: Config) -> PRM:
     if config.prm_path == "peiyi9979/math-shepherd-mistral-7b-prm":
         return MathShepherd(config)
 
-    if config.prm_path == "RLHFlow/Llama3.1-8B-PRM-Deepseek-Data":
+    if config.prm_path == "August4293/Llama3.1-8B-PRM-Deepseek-Data-4bit":
         return RLHFFlow(config)
 
     raise NotImplementedError(f"PRM {config.prm_path} not implemented")
